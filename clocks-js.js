@@ -11,11 +11,14 @@ class Clock {
 
     /**
      * Accepts an element's id in string form.
-     * @param elementName: string
-     * @param timeZone
+     * @param elementName: {string}
+     * @param utcOffSet
      */
-    constructor(elementName, timeZone='local'){
-        this.timeZone = timeZone.toLowerCase();
+    constructor(elementName, utcOffSet='local'){
+        this.utcOffSet = utcOffSet.toLowerCase();
+        //todo intialize off set hours/minutes!
+        this.osHours;
+        this.osMinutes;
         this.element = document.getElementById(elementName);
         this.localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
         this.tzOffSet = new Date().getTimezoneOffset();
@@ -23,6 +26,10 @@ class Clock {
         setInterval(this.setClockTime.bind(this), 1000);
     }
 
+    checkOffSetFormat(){
+        //todo get off set regex checked here!
+        let offSetRe = new RegExp();
+    }
     /**
      * Converts current time to a string
      * @returns {string}
